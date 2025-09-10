@@ -39,12 +39,10 @@
       overflow: hidden;
     }
 
-    /* Bagian yang disembunyikan di awal */
     .product-section, .payment-form {
       display: none;
     }
     
-    /* --- Welcome Screen --- */
     .welcome-screen {
       text-align: center;
       padding: 20px 0;
@@ -80,7 +78,6 @@
       margin-bottom: 30px;
     }
     
-    /* --- Tombol Utama --- */
     .action-btn {
       background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
       color: white;
@@ -101,7 +98,6 @@
       box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
     }
     
-    /* --- Product Section --- */
     .product-section h2 {
       font-size: 2em;
       border-bottom: 3px solid var(--primary-color);
@@ -166,7 +162,6 @@
         margin-bottom: 8px;
     }
     
-    /* --- Payment Form --- */
     .payment-form {
         animation: fadeIn 0.5s;
     }
@@ -196,7 +191,6 @@
         margin-bottom: 20px;
     }
     
-    /* --- Tombol Lainnya --- */
     .back-btn {
       background: #6c757d;
       float: left;
@@ -205,7 +199,7 @@
     }
     
     #continueToPayment {
-        display: none; /* Sembunyikan di awal */
+        display: none;
         margin-top: 30px;
         width: 100%;
     }
@@ -278,7 +272,7 @@
       <input type="email" id="email" placeholder="contoh@gmail.com" required>
       <label for="emailReceiver">Email Penerima Panel:</label>
       <input type="email" id="emailReceiver" placeholder="contoh@gmail.com" required>
-      <button class="action-btn" style="width: 100%; margin-top: 20px;" onclick="startPayment()">Konfirmasi Pembayaran</button>
+      <button class="action-btn" style="width: 100%; margin-top: 20px;" onclick="startPayment()">Pesan via WhatsApp</button>
     </div>
   </div>
 
@@ -326,635 +320,37 @@
     }
     
     function startPayment() {
+      // Nomor WhatsApp tujuan untuk menerima pesanan
+      const nomorAdmin = '6283186560235'; 
+
       const email = document.getElementById('email').value;
       const emailReceiver = document.getElementById('emailReceiver').value;
+      
       if (!email || !emailReceiver) {
         alert('Harap isi semua kolom email!');
         return;
       }
-      alert('Logika untuk memulai pembayaran akan dijalankan di sini!');
-    }
-  </script>
-</body>
-</html>
-    }
-
-    .welcome-screen h1 {
-      font-size: 2.5em;
-      font-weight: 700;
-      color: var(--secondary-color);
-      margin: 5px 0;
-    }
-    
-    .welcome-screen h1.brand {
-        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .welcome-screen p {
-      color: #6b7280;
-      font-size: 1.1em;
-      margin-bottom: 30px;
-    }
-    
-    /* --- Tombol Utama --- */
-    .action-btn {
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-      color: white;
-      border: none;
-      padding: 16px 35px;
-      font-size: 18px;
-      font-weight: 600;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .action-btn:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
-    }
-    
-    /* --- Product Section --- */
-    .product-section h2 {
-      font-size: 2em;
-      border-bottom: 3px solid var(--primary-color);
-      display: inline-block;
-      padding-bottom: 5px;
-      margin-bottom: 30px;
-    }
-    
-    .products {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 15px;
-    }
-
-    @media (min-width: 600px) {
-      .products {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    
-    .product-card {
-      border: 2px solid #e5e7eb;
-      padding: 20px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-align: left;
-    }
-
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-      border-color: var(--primary-color);
-    }
-
-    .product-card.selected {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-      background-color: #eff6ff;
-    }
-    
-    .product-card .product-name {
-        font-weight: 600;
-        font-size: 1.2em;
-        margin-bottom: 10px;
-    }
-    
-    .product-card .product-price {
-        font-size: 1.4em;
-        font-weight: 700;
-        color: var(--success-color);
-        margin-bottom: 15px;
-    }
-    
-    .product-card ul {
-        list-style: none;
-        padding: 0;
-        color: #4b5563;
-    }
-
-    .product-card li {
-        margin-bottom: 8px;
-    }
-    
-    /* --- Payment Form --- */
-    .payment-form {
-        animation: fadeIn 0.5s;
-    }
-    
-    .payment-form input, .payment-form select {
-        width: 100%;
-        padding: 12px;
-        margin-top: 8px;
-        margin-bottom: 16px;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        box-sizing: border-box;
-    }
-    
-    .payment-form label {
-        display: block;
-        text-align: left;
-        font-weight: 600;
-        margin-top: 10px;
-    }
-
-    #orderSummary {
-        background: #f9fafb;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: left;
-        margin-bottom: 20px;
-    }
-    
-    /* --- Tombol Lainnya --- */
-    .back-btn {
-      background: #6c757d;
-      float: left;
-      padding: 10px 20px;
-      font-size: 14px;
-    }
-    
-    #continueToPayment {
-        display: none; /* Sembunyikan di awal */
-        margin-top: 30px;
-        width: 100%;
-    }
-    
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="welcome-screen" id="welcomeScreen">
-      <div class="logo">🚀</div>
-      <h1>SELAMAT DATANG</h1>
-      <h1 class="brand">MANZ</h1>
-      <p>Beli kebutuhan bot hosting dengan cepat dan aman.</p>
-      <button class="action-btn" onclick="showProductSection()">
-        Lihat Produk
-      </button>
-    </div>
-
-    <div class="product-section" id="productSection">
-      <button class="action-btn back-btn" onclick="backToWelcome()">←</button>
-      <h2 style="text-align: center;">✨ Paket Pilihan ✨</h2>
-      <div class="products">
-        <div class="product-card" onclick="selectProduct(this, 'PANEL BOT 1GB', 2000)">
-          <div class="product-name">PANEL BOT 1GB</div>
-          <div class="product-price">Rp 2.000</div>
-          <ul>
-            <li><span class="emoji">💾</span> RAM: 1000 MB</li>
-            <li><span class="emoji">⚙️</span> CPU: 40%</li>
-          </ul>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'PANEL BOT 2GB', 4000)">
-          <div class="product-name">PANEL BOT 2GB</div>
-          <div class="product-price">Rp 4.000</div>
-          <ul>
-            <li><span class="emoji">💾</span> RAM: 2000 MB</li>
-            <li><span class="emoji">⚙️</span> CPU: 80%</li>
-          </ul>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'PANEL BOT 3GB', 6000)">
-          <div class="product-name">PANEL BOT 3GB</div>
-          <div class="product-price">Rp 6.000</div>
-          <ul>
-            <li><span class="emoji">💾</span> RAM: 3000 MB</li>
-            <li><span class="emoji">⚙️</span> CPU: 120%</li>
-          </ul>
-        </div>
-         <div class="product-card" onclick="selectProduct(this, 'PANEL BOT 5GB', 10000)">
-          <div class="product-name">PANEL BOT 5GB</div>
-          <div class="product-price">Rp 10.000</div>
-          <ul>
-            <li><span class="emoji">💾</span> RAM: 5000 MB</li>
-            <li><span class="emoji">⚙️</span> CPU: 200%</li>
-          </ul>
-        </div>
-      </div>
-      <button id="continueToPayment" class="action-btn" onclick="showPaymentForm()">
-        Lanjut ke Pembayaran 🛒
-      </button>
-    </div>
-
-    <div class="payment-form" id="paymentForm">
-      <button class="action-btn back-btn" onclick="backToProductSection()">←</button>
-      <h2 style="text-align: center;">🛒 Checkout</h2>
-      <div id="orderSummary">
-        <h3>Ringkasan Order</h3>
-        <p><strong>Paket:</strong> <span id="summaryPackage"></span></p>
-        <p><strong>Harga:</strong> <span id="summaryPrice"></span></p>
-      </div>
-      <label for="email">Email Aktif Anda:</label>
-      <input type="email" id="email" placeholder="contoh@gmail.com" required>
-      <label for="emailReceiver">Email Penerima Panel:</label>
-      <input type="email" id="emailReceiver" placeholder="contoh@gmail.com" required>
-      <button class="action-btn" style="width: 100%; margin-top: 20px;" onclick="startPayment()">Konfirmasi Pembayaran</button>
-    </div>
-  </div>
-
-  <script>
-    let selectedProductData = null;
-    const welcomeScreen = document.getElementById('welcomeScreen');
-    const productSection = document.getElementById('productSection');
-    const paymentForm = document.getElementById('paymentForm');
-    const checkoutButton = document.getElementById('continueToPayment');
-
-    function showProductSection() {
-      welcomeScreen.style.display = 'none';
-      productSection.style.display = 'block';
-    }
-
-    function showPaymentForm() {
+      
       if (!selectedProductData) {
-        alert("Silakan pilih produk terlebih dahulu!");
-        return;
+          alert('Terjadi kesalahan, silakan pilih ulang produk Anda.');
+          backToProductSection();
+          return;
       }
-      document.getElementById('summaryPackage').textContent = selectedProductData.name;
-      document.getElementById('summaryPrice').textContent = 'Rp ' + selectedProductData.price.toLocaleString('id-ID');
-      productSection.style.display = 'none';
-      paymentForm.style.display = 'block';
-    }
-    
-    function backToWelcome() {
-      productSection.style.display = 'none';
-      welcomeScreen.style.display = 'block';
-    }
 
-    function backToProductSection() {
-      paymentForm.style.display = 'none';
-      productSection.style.display = 'block';
-    }
+      const message = `Halo, saya ingin memesan panel Pterodactyl:
 
-    function selectProduct(element, name, price) {
-      const allProductCards = document.querySelectorAll('.product-card');
-      allProductCards.forEach(card => {
-        card.classList.remove('selected');
-      });
-      element.classList.add('selected');
-      selectedProductData = { name: name, price: price };
-      checkoutButton.style.display = 'block';
-    }
-    
-    function startPayment() {
-      const email = document.getElementById('email').value;
-      const emailReceiver = document.getElementById('emailReceiver').value;
-      if (!email || !emailReceiver) {
-        alert('Harap isi semua kolom email!');
-        return;
-      }
-      alert('Logika untuk memulai pembayaran akan dijalankan di sini!');
+*Paket:* ${selectedProductData.name}
+*Harga:* Rp ${selectedProductData.price.toLocaleString('id-ID')}
+
+*Email Aktif (untuk nota):* ${email}
+*Email Penerima Panel:* ${emailReceiver}
+
+Mohon segera diproses. Terima kasih!`;
+
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${nomorAdmin}&text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappURL, '_blank');
     }
   </script>
 </body>
 </html>
-      <div class="floating-elements">
-        <div class="floating-element" style="width: 30px; height: 30px; top: 20%; left: 10%;"></div>
-        <div class="floating-element" style="width: 20px; height: 20px; top: 30%; left: 60%;"></div>
-        <div class="floating-element" style="width: 15px; height: 15px; top: 70%; left: 80%;"></div>
-        <div class="floating-element" style="width: 25px; height: 25px; top: 80%; left: 20%;"></div>
-        <div class="floating-element" style="width: 10px; height: 10px; top: 40%; left: 30%;"></div>
-      </div>
-      <h1 class="welcome-title">TOKO PANEL PTERODACTYL</h1>
-      <h1 class="welcome-title">MTS4YOU CHANEL</h1>
-      <div class="welcome-logo">🚀📦️</div>
-      <h1 class="welcome-title">SELAMAT DATANG</h1>
-      <p class="welcome-subtitle">BELI KEBUTUHAN BOT HOSTING DENGAN CEPAT DAN AMAN MELALUI WEBSITE</p>
-      <p class="welcome-subtitle">DATA AKAN TERKIRIM KE E-MAIL KALIAN</p>
-      <button class="buy-btn" onclick="showProductSection()" style="
-        background: linear-gradient(to right, #1861a1, #1861a1);
-        color: #333;
-        border: none;
-        padding: 18px 40px;
-        font-size: 20px;
-        font-weight: bold;
-        border-radius: 50px;
-        cursor: pointer;
-        box-shadow: 0 10px 20px rgba(64, 0, 255, 0.3);
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative;
-        overflow: hidden;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        -webkit-tap-highlight-color: transparent;
-      ">
-        LIHAT PRODUK
-      </button>
-    </div>
-
-    <div class="product-section" id="productSection">
-      <div style="display: flex; justify-content: center; gap: 10px;"></div>
-<!--      <h2>🎉 Paket Promo 🎉</h2>
-      <h2>(s/d 7 September)️</h2>
-      <div class="products">
-<div class="product-card" onclick="selectProduct(this, 'PUnlimited', 10000)">
-          <div class="product-name">PANEL BOT UNLIMITED</div>
-          <div class="product-price">Rp 10.000  R̶p̶ ̶1̶5̶.̶0̶0̶0̶</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: Unlimited</li>
-              <li><span class="feature-emoji">📦</span> Disk: Unlimited</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: Unlimited</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <h2>⚡ Paket Express ⚡️</h2>
-      <div class="products">
-        <div class="product-card" onclick="selectProduct(this, 'P1GB/Unlimited', 8500)">
-          <div class="product-name">PANEL BOT 1GB</div>
-          <div class="product-price">Rp 8.500</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 1000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 1000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: Unlimited</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P2GB/Unlimited', 9500)">
-          <div class="product-name">PANEL BOT 2GB</div>
-          <div class="product-price">Rp 9.500</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 2000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 2000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: Unlimited</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P3GB/Unlimited', 10500)">
-          <div class="product-name">PANEL BOT 3GB</div>
-          <div class="product-price">Rp 10.500</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 3000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 3000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: Unlimited</li>
-            </ul>
-          </div>
-        </div>
-      </div>-->
-      <h2>✨ Paket Normal ✨</h2>
-      <div class="products">
-      <div class="product-card" onclick="selectProduct(this, 'P1GB/40%', 2000)">
-          <div class="product-name">PANEL BOT 1GB</div>
-          <div class="product-price">Rp 2.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 1000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 1000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 40%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P1,5GB/60%', 3000)">
-          <div class="product-name">PANEL BOT 1,5GB</div>
-          <div class="product-price">Rp 3.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 1500 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 1500 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 60%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P2GB/80%', 4000)">
-          <div class="product-name">PANEL BOT 2GB</div>
-          <div class="product-price">Rp 4.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 2000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 2000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 80%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P2,5GB/100%', 5000)">
-          <div class="product-name">PANEL BOT 2,5GB</div>
-          <div class="product-price">Rp 5.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 2500 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 2500 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 100%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P3GB/120%', 6000)">
-          <div class="product-name">PANEL BOT 3GB</div>
-          <div class="product-price">Rp 6.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 3000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 3000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 120%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P3,5GB/140%', 7000)">
-          <div class="product-name">PANEL BOT 3,5GB</div>
-          <div class="product-price">Rp 7.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 3500 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 3500 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 140%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P4GB/160%', 8000)">
-          <div class="product-name">PANEL BOT 4GB</div>
-          <div class="product-price">Rp 8.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 4000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 4000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 160%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P4,5GB/180%', 9000)">
-          <div class="product-name">PANEL BOT 4,5GB</div>
-          <div class="product-price">Rp 9.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 4500 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 4500 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 180%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P5GB/200%', 10000)">
-          <div class="product-name">PANEL BOT 5GB</div>
-          <div class="product-price">Rp 10.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 5000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 5000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 200%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P5,5GB/220%', 11000)">
-          <div class="product-name">PANEL BOT 5,5GB</div>
-          <div class="product-price">Rp 11.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 5500 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 5500 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 220%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P6GB/240%', 12000)">
-          <div class="product-name">PANEL BOT 6GB</div>
-          <div class="product-price">Rp 12.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 6000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 6000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 240%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P6,5GB/260%', 13000)">
-          <div class="product-name">PANEL BOT 6,5GB</div>
-          <div class="product-price">Rp 13.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 6500 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 6500 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 260%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'P7GB/280%', 14000)">
-          <div class="product-name">PANEL BOT 7GB</div>
-          <div class="product-price">Rp 14.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: 7000 MB</li>
-              <li><span class="feature-emoji">📦</span> Disk: 7000 MB</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: 280%</li>
-            </ul>
-          </div>
-        </div>
-        <div class="product-card" onclick="selectProduct(this, 'PUnlimited', 15000)">
-          <div class="product-name">PANEL BOT UNLIMITED</div>
-          <div class="product-price">Rp 15.000</div>
-          <div class="product-specs">
-            <ul>
-              <li><span class="feature-emoji">⏱️</span> Masa Aktif ±1 Bulan</li>
-              <li><span class="feature-emoji">🛠️</span> Garansi 10 Hari</li>
-              <li><span class="feature-emoji">💾</span> RAM: Unlimited</li>
-              <li><span class="feature-emoji">📦</span> Disk: Unlimited</li>
-              <li><span class="feature-emoji">⚙️</span> CPU: Unlimited</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <button id="continueToPayment" onclick="showPaymentForm()" style="display:none;">
-        CHECKOUT
-      </button>
-    </div>
-
-    <div class="payment-form" id="paymentForm">
-      <button class="back-btn" onclick="backToProductSection()">← Kembali</button>
-      <h2>🛒 Checkout - QRIS Payment</h2>
-      <div id="orderSummary">
-        <h3>Ringkasan Order</h3>
-        <p><strong>Paket:</strong> <span id="summaryPackage"></span></p>
-        <p><strong>Harga:</strong> <span id="summaryPrice"></span></p>
-      </div>
-      <label for="email">Masukkan Email Aktif:</label>
-      <input type="email" id="email" placeholder="contoh@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Masukkan email yang valid (contoh: nama@gmail.com)">
-      <label for="emailReceiver">Masukkan Email Penerima Data Panel:</label>
-      <input type="email" id="emailReceiver" placeholder="contoh@gmail.com" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Masukkan email yang valid (contoh: nama@gmail.com)">
-      <label for="payment-method">Metode Pembayaran:</label>
-      <select id="payment-method">
-        <option value="qris">QRIS (QR Code)</option>
-      </select>
-      <button id="startButton" onclick="startPayment()">Konfirmasi Pembayaran</button>
-      <button id="cancelButton" style="display:none" onclick="cancelPayment()">Cancel</button>
-      <div id="loading" class="loading" style="display:none">
-        <div class="spinner"></div>
-        <p>Membuat pembayaran...</p>
-      </div>
-      <div id="info" style="display: none; padding: 20px; background: linear-gradient(135deg, #1f2937, #111827); border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); color: #f9fafb; font-family: 'Poppins', sans-serif; font-size: 14px;">
-        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-          <strong>ID Pembayaran:</strong> <span id="idPembayaran"></span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-          <strong>Transaction ID:</strong> <span id="trxId"></span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-          <strong>Nama Penerima:</strong> <span>YULIANA STORE OK2359224</span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-          <strong>Total Pembayaran:</strong> <span>Rp</span><span id="total"></span>
-        </div>
-        <div style="display: flex; justify-content: space-between; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-          <strong>Expired:</strong> <span id="expired"></span>
-        </div>
-        <p><strong>QRIS Code:</strong></p>
-        <img id="qrImage" class="qr-image" src="" alt="QR Code">
-        <p><span>Harap Screen Shoot Detail Bukti Pembayaran Yang Terlihat Jam Dan Tanggal Pembayaran.</span></p>
-        <p><strong>URL Gambar QR Code:</strong></p>
-        <div class="url-box" id="qrImageUrl"></div>
-        <div class="copy-btn" onclick="copyQrUrl()">Salin URL Gambar QR</div>
-      </div>
-      <div id="status" style="display: none; text-align: center; font-size: 16px; color: #f9fafb; margin-bottom: 15px;"></div>
-      <button id="checkStatusButton" onclick="checkStatusNow()" style="background: #1556c5; color: #000000; font-weight: bold; padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; transition: background 0.3s;">
-        🔍 Cek Status Manual
-      </button>
-    </div>
-
-    <div class="success-message" id="successMessage">
-      <div class="success-container">
-        <div class="success-header">
-          <div class="success-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-           
